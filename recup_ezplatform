@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# system requirements
+sudo apt-get install curl mysql-server mysql-client php5-cli php5-xsl php5-mysql php5-curl imagemagick
+
+# let's get composer
+curl -sS https://getcomposer.org/installer | php
+
+# a database is needed, by default 'ezplatform'
+mysql -u root -p -e 'CREATE DATABASE ezplatform2 CHARACTER SET utf8;'
+
+# creating the project, with -n it won't ask you anything
+./composer.phar create-project --no-dev --prefer-dist ezsystems/ezplatform-demo
+
+# install the database and run the server
+cd ezplatform-demo
+php app/console ezplatform:install --env=prod demo
+php app/console server:run --env=prod
