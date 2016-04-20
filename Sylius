@@ -1,0 +1,8 @@
+[user]$ curl -sS https://getcomposer.org/installer | php
+[user]$ sudo mv composer.phar /usr/local/bin/composer
+
+[user]$ cd ~/
+[user]$ composer create-project sylius/sylius:v0.14.0
+
+
+****En cour de création ****
